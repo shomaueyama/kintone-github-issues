@@ -1,0 +1,28 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm test
+      # パッケージングが通ることだけ確かめる。鍵は使い捨て(本物の private.ppk はリポジトリに入れない)
+      - run: npx cli-kintone plugin keygen --output private.ppk
+      - run: npm run build:prod
+      - uses: actions/upload-artifact@v4
+        with:
+          name: plugin-zip-unsigned-check
+          path: dist/plugin.zip
+          retention-days: 7

@@ -1,0 +1,29 @@
+{
+  "$schema": "https://raw.githubusercontent.com/kintone/js-sdk/%40kintone/plugin-manifest-validator%4010.2.0/packages/plugin-manifest-validator/manifest-schema.json",
+  "manifest_version": 1,
+  "version": "0.1.0",
+  "type": "APP",
+  "name": {
+    "en": "GitHub Issues Connector",
+    "ja": "GitHub Issues 連携"
+  },
+  "description": {
+    "en": "Create a GitHub issue from a kintone record and keep the issue state in sync.",
+    "ja": "kintone のレコードから GitHub Issue を作成し、Issue の状態をレコードに同期します。"
+  },
+  "homepage_url": {
+    "en": "https://github.com/shomaueyama/kintone-github-issues",
+    "ja": "https://github.com/shomaueyama/kintone-github-issues"
+  },
+  "icon": "plugin/image/icon.png",
+  "desktop": {
+    "js": ["lib/desktop.js"],
+    "css": ["plugin/css/desktop.css"]
+  },
+  "config": {
+    "html": "plugin/html/config.html",
+    "js": ["lib/config.js"],
+    "css": ["plugin/css/51-modern-default.css", "plugin/css/config.css"],
+    "required_params": ["repo", "titleField", "issueNumberField"]
+  }
+}

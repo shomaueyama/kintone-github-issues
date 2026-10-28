@@ -1,0 +1,6 @@
+node_modules/
+dist/
+lib/
+private.ppk
+*.ppk
+.env

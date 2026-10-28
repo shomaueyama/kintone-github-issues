@@ -1,0 +1,24 @@
+.settings-heading {
+  padding: 1em 0;
+}
+
+.ghi-section {
+  margin: 1.5em 0 0.5em;
+  font-size: 1.1em;
+}
+
+.ghi-settings .kintoneplugin-input-text {
+  width: 28em;
+}
+
+.ghi-help {
+  margin: 0.3em 0 0;
+  color: #666;
+  font-size: 0.85em;
+}
+
+.ghi-buttons {
+  margin-top: 2em;
+  display: flex;
+  gap: 0.5em;
+}

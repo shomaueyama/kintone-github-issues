@@ -1,0 +1,21 @@
+<section class="settings ghi-settings">
+  <h2 class="settings-heading">GitHub Issues 連携の設定</h2>
+  <p class="kintoneplugin-desc">
+    レコード詳細画面に「GitHub Issue を作成」ボタンを表示し、作成した Issue の番号・URL・状態をレコードに書き込みます。
+  </p>
+
+  <h3 class="ghi-section">接続先</h3>
+  <div class="kintoneplugin-row" id="ghi-repo"></div>
+  <div class="kintoneplugin-row">
+    <label class="kintoneplugin-label" for="ghi-token">GitHub トークン<span class="kintoneplugin-require">*</span></label>
+    <input type="password" id="ghi-token" class="kintoneplugin-input-text" autocomplete="off" placeholder="ghp_... または github_pat_...">
+    <p class="ghi-help" id="ghi-token-help">
+      Fine-grained personal access token を推奨します(対象リポジトリのみ、Issues: Read and write)。トークンは kintone の proxy 設定に保存され、画面の JavaScript からは参照できません。
+    </p>
+  </div>
+
+  <h3 class="ghi-section">フィールドの割り当て</h3>
+  <div id="ghi-fields"></div>
+
+  <div class="kintoneplugin-row ghi-buttons" id="ghi-buttons"></div>
+</section>
