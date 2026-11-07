@@ -15,6 +15,16 @@ kintone のレコードから GitHub Issue を作成し、Issue の状態(open /
 
 やらないこと(意図して外した): レコード保存時の自動作成、GitHub 側からの逆同期、Issue 本文の双方向編集。理由は [ADR 0001](docs/adr/0001-manual-button-not-auto-create.md)。
 
+## 画面
+
+| 作成前 | 作成後 |
+|---|---|
+| ![レコード詳細(作成前)](docs/images/detail-before.png) | ![レコード詳細(作成後)](docs/images/detail-after.png) |
+
+設定画面。フィールドはアプリの定義から種類で絞って選ぶ。トークンは保存後に画面へ戻らない。
+
+![プラグイン設定画面](docs/images/config.png)
+
 ## 構成
 
 ```mermaid
