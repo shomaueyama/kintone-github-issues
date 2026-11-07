@@ -22,3 +22,32 @@
   display: flex;
   gap: 0.5em;
 }
+
+/* ネイティブの input を使うトークン欄を、kintone UI Component の Text と同じ見た目に寄せる */
+.ghi-token-row .kintoneplugin-label {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 14px;
+  font-weight: normal;
+  color: #333333;
+}
+
+.ghi-token-row .kintoneplugin-require {
+  margin-left: 4px;
+  color: #e74c3c;
+}
+
+.ghi-token-row .kintoneplugin-input-text {
+  display: block;
+  height: 40px;
+  box-sizing: border-box;
+  padding: 0 8px;
+  border: 1px solid #e3e7e8;
+  background-color: #ffffff;
+  font-size: 14px;
+}
+
+.ghi-token-row .kintoneplugin-input-text:focus {
+  outline: none;
+  border-color: #3498db;
+}
