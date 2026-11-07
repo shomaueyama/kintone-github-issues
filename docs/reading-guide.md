@@ -38,9 +38,10 @@
 - 保存処理: `setProxyConfig` を GET と POST の2回呼ぶ理由(ADR 0002)。トークン未入力でも保存できる条件
 - リポジトリを変えたときにトークンの再入力を求める理由
 
-## 7. `test/*.test.ts`(5分)
+## 7. `test/*.test.ts`(10分)
 
-- 各テストが上の「理由」のどれを守っているかを対応づける
+- `config.test.ts` / `github.test.ts` / `sync.test.ts`: `src/lib` の単体テスト。各テストが上の「理由」のどれを守っているかを対応づける
+- `desktop.test.ts` / `config-screen.test.ts`: kintone のグローバルをモックした画面側のテスト。「kintone のどの関数を、どんな引数で呼ぶか」をここで確かめている。モックが本物の kintone とずれていないかは、`docs/verification.md` の手動確認で担保している
 
 ## 面接で聞かれそうなこと
 

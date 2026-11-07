@@ -3,7 +3,7 @@
 kintone のレコードから GitHub Issue を作成し、Issue の状態(open / closed)をレコードに同期する kintone プラグインです。
 問い合わせ管理や不具合報告のアプリを kintone で運用し、対応は GitHub で行うチーム向けに作りました。
 
-> **開発状況:** 設計・実装・単体テスト・パッケージングに加え、kintone 開発者環境での動作確認まで完了(2026-11-05)。確認した 14 項目のうち 12 項目が OK、トークンの再入力が要る 2 項目(無効トークン・誤ったリポジトリ名)は未確認。記録は [docs/verification.md](docs/verification.md)。
+> **開発状況:** 設計・実装・自動テスト・パッケージングに加え、kintone 開発者環境での動作確認まで完了。手動確認は 14 項目のうち 13 項目が OK(2026-11-07 時点)、残る 1 項目(誤ったリポジトリ名で 404)は有効なトークンの再入力が要るため未確認。記録は [docs/verification.md](docs/verification.md)。
 
 ## できること
 
@@ -49,6 +49,7 @@ flowchart LR
 ```
 
 - 判断(リクエストの組み立て、応答の検証、エラーの分類、レコードとの対応づけ)は `src/lib` に集め、kintone のグローバルに依存しない形にしている。単体テストはこの層を対象にしている
+- 画面側(`desktop.ts` / `config.ts`)は、kintone のグローバルをモックした jsdom 上のテストで、ボタン押下から REST 呼び出し・GitHub 呼び出し・表示までを通しで確かめている
 - `src/desktop.ts` と `src/config.ts` は、画面と kintone API を `src/lib` につなぐだけ
 - GitHub のトークンは `kintone.plugin.app.setProxyConfig` で kintone 側に保存し、プラグインの JavaScript からは読めない([ADR 0002](docs/adr/0002-token-in-proxy-config.md))
 
@@ -90,7 +91,7 @@ flowchart LR
 
 ```bash
 npm install
-npm test          # Vitest(src/lib の単体テスト)
+npm test          # Vitest。src/lib の単体テストと、kintone をモックした画面側のテスト(test/desktop.test.ts, test/config-screen.test.ts)
 npm run typecheck # tsc --noEmit
 npm run lint      # @cybozu/eslint-config
 npm run build:prod  # dist/plugin.zip を生成(private.ppk が必要)

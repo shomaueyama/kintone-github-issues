@@ -32,3 +32,13 @@ kintone プラグインのコードは、`kintone.events.on` や `kintone.api`�
 - `src/lib` のテストは kintone 無しで 1 秒以内に回る。CI で毎回実行する
 - 画面側のコードは薄くなり、読む量が減った
 - 画面側の不具合はテストでは見つからない。動作確認の記録を `docs/verification.md` に残す
+
+## 追記(2026-11-07)
+
+開発者環境での手動確認を終えたあと、画面側にも kintone のグローバルをモックした jsdom 上のテストを追加した(`test/desktop.test.ts`、`test/config-screen.test.ts`)。
+
+- 理由: 401 / 404 / 部分失敗 / 二重作成といった分岐は、手動では再現の手間が大きく(トークンの差し替えやフィールド権限の変更が要る)、変更のたびに確かめ直せない
+- モックの範囲: `kintone.api`、`kintone.plugin.app.proxy / getConfig / getProxyConfig / setProxyConfig / setConfig`、`kintone.events.on`、`kintone.app.record.getHeaderMenuSpaceElement` の 8 つ。「検討した他の案」で懸念した維持の手間は、この範囲なら小さかった
+- 限界: モックが本物とずれていても気づけない。proxy 設定の前方一致やフィールドのアクセス権の挙動など、kintone の実物でしか分からないことは手動確認に残す(`docs/verification.md`)
+
+この ADR の決定(判断を `src/lib` に集める)は変えていない。画面側のテストは「`src/lib` を正しい引数で呼び、結果を正しく kintone に渡しているか」を見るもので、判断そのものの検証は引き続き `src/lib` のテストが担う
