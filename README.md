@@ -5,6 +5,8 @@ kintone のレコードから GitHub Issue を作成し、Issue の状態(open /
 
 > **開発状況:** 設計・実装・自動テスト・パッケージングに加え、kintone 開発者環境での動作確認まで完了。手動確認は 14 項目のうち 13 項目が OK(2026-11-07 時点)、残る 1 項目(誤ったリポジトリ名で 404)は有効なトークンの再入力が要るため未確認。記録は [docs/verification.md](docs/verification.md)。
 
+設計で迷ったところと公開時に踏んだ問題は記事にまとめています: [kintone プラグインから GitHub API を叩いて、迷ったところと踏んだところ(Zenn)](https://zenn.dev/ueshoma/articles/fdef348b89e057)
+
 ## できること
 
 | 画面 | 動作 |
